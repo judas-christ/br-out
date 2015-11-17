@@ -1,0 +1,14 @@
+.br-out__block {
+  display: inline-block;
+}
+
+.br-out__block--broken {
+  opacity: 0;
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: opacity .1s ease-in, -webkit-transform .1s ease-out;
+  transition: opacity .1s ease-in, -webkit-transform .1s ease-out;
+  transition: opacity .1s ease-in, transform .1s ease-out;
+  transition: opacity .1s ease-in, transform .1s ease-out, -webkit-transform .1s ease-out;
+}

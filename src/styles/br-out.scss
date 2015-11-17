@@ -1,0 +1,13 @@
+.br-out {
+
+  &__block {
+    display: inline-block;
+
+    &--broken {
+      opacity: 0;
+      transform: scale(1.2);
+      transition: opacity .1s ease-in, transform .1s ease-out;
+    }
+  }
+
+}

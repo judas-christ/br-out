@@ -1,0 +1,27 @@
+{
+  "name": "br-out",
+  "version": "1.0.0",
+  "description": "<br> out",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Hägglund",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-combine-mq": "^0.4.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-css-globbing": "^0.1.8",
+    "gulp-csso": "^1.0.1",
+    "gulp-inject": "^3.0.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-rollup": "^1.4.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-util": "^3.0.7",
+    "rimraf": "^2.4.3"
+  }
+}
