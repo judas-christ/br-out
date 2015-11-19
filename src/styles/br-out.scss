@@ -1,13 +1,28 @@
 .br-out {
+  position: relative;
+  padding-bottom: 5em;
 
   &__block {
     display: inline-block;
+    box-shadow: 1px 1px 0 #bbb;
 
     &--broken {
+      box-shadow: 0;
       opacity: 0;
       transform: scale(1.2);
       transition: opacity .1s ease-in, transform .1s ease-out;
     }
+  }
+
+  &__ball {
+    display: block;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    background-color: pink;
+    border-radius: 0.5em;
+    bottom: 0;
+    left: 0;
   }
 
 }
