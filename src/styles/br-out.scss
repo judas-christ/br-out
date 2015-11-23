@@ -1,6 +1,10 @@
+$hue-pad: 180;
+$hue-ball: 10;
+
 .br-out {
   position: relative;
   padding-bottom: 5em;
+  user-select: none;
 
   &__block {
     display: inline-block;
@@ -19,10 +23,21 @@
     position: absolute;
     width: 1em;
     height: 1em;
-    background-color: pink;
+    background-color: hsl($hue-ball, 50%, 80%);
     border-radius: 0.5em;
+    bottom: 1em;
+    left: 0;
+  }
+
+  &__pad {
+    display: block;
+    position: absolute;
+    width: 4em;
+    height: 1em;
+    background-color: hsl($hue-pad, 50%, 80%);
     bottom: 0;
     left: 0;
+    transition: transform .05s ease;
   }
 
 }

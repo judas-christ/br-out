@@ -2,21 +2,19 @@ import { forEach, map, flatten, slice } from './arrayUtils'
 
 function createBlocks(element) {
   var childNodes = element.childNodes;
-  console.log(element, childNodes);
+  // console.log(element, childNodes);
   return flatten.call(slice.call(childNodes, 0).map(handleNode));
 }
 
 function handleNode(node) {
-  console.log(node.nodeType, node);
+  // console.log(node.nodeType, node);
   if(node.nodeType === 3) {
     // text node, do stuff
     return makeBlocks(node);
   } else if(node.nodeType === 1) {
     // element node
     // recurse
-    var b = createBlocks(node);
-    console.log(b);
-    return b;
+    return createBlocks(node);
   }
 }
 

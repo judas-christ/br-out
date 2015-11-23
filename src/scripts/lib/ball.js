@@ -1,16 +1,16 @@
 var acceleration = 0.005;
 var v0 = 0.2;
 
-function Ball(document, parent) {
+function Ball(parent) {
+  var document = parent.ownerDocument;
   var element = document.createElement('span');
   element.className = 'br-out__ball';
-  parent.appendChild(element);
   this.x = parent.offsetLeft + parent.clientWidth / 2;
-  this.y = -10;
+  this.y = 0;
   this.a = Math.PI / 4 * (Math.random() - Math.random());
   this.v = v0;
   this.el = element;
-  //get middle of parent
+  parent.appendChild(element);
 }
 
 Ball.prototype = {
@@ -19,8 +19,7 @@ Ball.prototype = {
     that.x += Math.sin(that.a) * that.v * dt;
     that.y -= Math.cos(that.a) * that.v * dt;
   },
-  draw: function(ctx) {
-    // console.log('Ball', this.x, this.y, this.a, this.v);
+  draw: function() {
     var el = this.el;
     el.style.transform = 'translate(' + this.x + 'px, ' + this.y + 'px)';
   },
@@ -32,6 +31,16 @@ Ball.prototype = {
       || myBounds.bottom < otherBounds.top
       || myBounds.right < otherBounds.left
       || myBounds.left > otherBounds.right);
+  },
+  checkPadCollision: function(other) {
+    var myBounds = this.el.getBoundingClientRect();
+    var otherBounds = other.getBoundingClientRect();
+    return (myBounds.top > otherBounds.bottom
+      || myBounds.bottom < otherBounds.top
+      || myBounds.right < otherBounds.left
+      || myBounds.left > otherBounds.right)
+      ? false
+      : ((myBounds.left + myBounds.width / 2) - (otherBounds.left + otherBounds.width / 2)) / otherBounds.width / 2;
   },
   checkWallBounce: function() {
     var el = this.el;
@@ -50,12 +59,13 @@ Ball.prototype = {
     }
     return 0;
   },
-  bounce: function(onWall) {
+  bounce: function(onWall, padAngle) {
     if(onWall) {
       this.a = -this.a;
+    } else if(typeof padAngle !== 'undefined') {
+      this.a = padAngle * Math.PI;
     } else {
       this.a += Math.PI - this.a*2;
-      // console.log('new angle',this.a);
     }
     this.v += acceleration;
   },
