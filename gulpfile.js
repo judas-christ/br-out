@@ -56,6 +56,11 @@ gulp.task('images', function() {
     .pipe($.connect.reload());
 });
 
+gulp.task('deploy', ['build'], function() {
+  return gulp.src('build/**/*')
+    .pipe(gulp.dest('.'));
+})
+
 gulp.task('serve', ['build'], function(done) {
   $.connect.server({
     root: 'build',
