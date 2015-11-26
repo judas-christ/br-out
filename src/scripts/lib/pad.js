@@ -2,10 +2,10 @@ function Pad(parent) {
   var document = parent.ownerDocument;
   var element = document.createElement('span');
   element.className = 'br-out__pad';
-  this.x = parent.offsetLeft + parent.clientWidth / 2;
+  this.x = parent.clientWidth / 2;
   this.el = element;
   parent.appendChild(element);
-  document.body.addEventListener('mousemove', this.move.bind(this));
+  document.documentElement.addEventListener('mousemove', this.move.bind(this));
 }
 
 Pad.prototype = {

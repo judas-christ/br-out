@@ -1,11 +1,12 @@
 var acceleration = 0.005;
 var v0 = 0.2;
+var vMax = v0 + acceleration * 50;
 
 function Ball(parent) {
   var document = parent.ownerDocument;
   var element = document.createElement('span');
   element.className = 'br-out__ball';
-  this.x = parent.offsetLeft + parent.clientWidth / 2;
+  this.x = parent.clientWidth / 2;
   this.y = 0;
   this.a = Math.PI / 4 * (Math.random() - Math.random());
   this.v = v0;
@@ -67,13 +68,12 @@ Ball.prototype = {
     } else {
       this.a += Math.PI - this.a*2;
     }
-    this.v += acceleration;
+    this.v = Math.min(vMax, this.v + acceleration);
   },
   reset: function() {
-    // console.log('reset!');
     var parent = this.el.parentNode;
     this.x = parent.clientWidth / 2;
-    this.y = -10;
+    this.y = 0;
     this.a = Math.PI / 4 * (Math.random() - Math.random());
     this.v = v0;
   }
