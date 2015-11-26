@@ -12,3 +12,13 @@ html {
 body {
   margin: 2em 0;
 }
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: hsl(180, 30%, 30%);
+
+  &:hover {
+    color: hsl(180, 50%, 50%);
+  }
+}
