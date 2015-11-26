@@ -40,12 +40,12 @@ gulp.task('html', ['styles', 'scripts'], function() {
 
   var injected = gulp.src(['styles/*.css', 'scripts/*.js'], {
     read: false,
-    cwd: 'build'
+    // cwd: 'build'
   });
 
   return gulp.src('src/**/[^_]*.jade')
     .pipe($.jade().on('error', errorHandler))
-    .pipe($.inject(injected))
+    .pipe($.inject(injected, {addRootSlash: false}))
     .pipe(gulp.dest('build'))
     .pipe($.connect.reload());
 });
